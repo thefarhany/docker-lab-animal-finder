@@ -46,6 +46,32 @@ export default function Home() {
     setCategory(newCategory);
   }
 
+  useEffect(() => {
+    async function loadAnimals() {
+      console.log("Start");
+
+      setLoading(true);
+
+      try {
+        const data = await getAnimals(search, category);
+
+        console.log("Success", data.length);
+
+        setAnimals(data);
+      } catch (e) {
+        console.error(e);
+
+        setError("Failed to load animals.");
+      } finally {
+        console.log("Finally");
+
+        setLoading(false);
+      }
+    }
+
+    loadAnimals();
+  }, [search, category]);
+
   return (
     <div className="flex min-h-screen flex-col bg-zinc-50 dark:bg-zinc-950">
       <header className="bg-white py-8 shadow-sm dark:bg-zinc-900">
@@ -95,7 +121,8 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-zinc-200 bg-white py-6 text-center text-sm text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900">
-        © {new Date().getFullYear()} Animal Finder. Built with Next.js + Node.js + MySQL.
+        © {new Date().getFullYear()} Animal Finder. Built with Next.js + Node.js
+        + MySQL.
       </footer>
     </div>
   );
