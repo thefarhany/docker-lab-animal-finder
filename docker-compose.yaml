@@ -1,7 +1,6 @@
 services:
   mysql:
     image: mysql:8.0
-
     restart: unless-stopped
 
     environment:
@@ -34,6 +33,21 @@ services:
 
     depends_on:
       - mysql
+
+  frontend:
+    build:
+      context: ./frontend
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      NEXT_PUBLIC_API_URL: http://192.168.100.157:5000
+
+    depends_on:
+      - backend
 
 volumes:
   animal_mysql_data:
