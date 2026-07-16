@@ -1,0 +1,24 @@
+{
+  "name": "animal-finder-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Animal Finder",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "seed": "node src/seed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "animal",
+    "finder",
+    "api"
+  ],
+  "license": "MIT"
+}
