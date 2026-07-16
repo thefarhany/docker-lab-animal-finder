@@ -1,4 +1,4 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+export const API_URL = "http://192.168.100.157:5000";
 
 export interface Animal {
   id: number;
@@ -17,7 +17,10 @@ export interface Category {
   name: string;
 }
 
-export async function getAnimals(search?: string, category?: string): Promise<Animal[]> {
+export async function getAnimals(
+  search?: string,
+  category?: string,
+): Promise<Animal[]> {
   const params = new URLSearchParams();
   if (search) params.set("search", search);
   if (category) params.set("category", category);
